@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import TimelineItem from "@/components/timeline-item"
+import TimelineItem from "@/components/shared/timeline-item"
 import { GraduationCap, Briefcase, Award, Shield, Github, Code } from "lucide-react"
 
 const Timeline = forwardRef<HTMLDivElement>((_, ref) => {

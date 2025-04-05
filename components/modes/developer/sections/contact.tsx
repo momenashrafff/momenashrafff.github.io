@@ -2,9 +2,9 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { socialLinks } from "./constants"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/card"
+import { Button } from "@/components/shared/button"
+import { socialLinks } from "@/components/shared/constants"
 
 const Contact = forwardRef<HTMLDivElement>((_, ref) => {
   return (
@@ -36,28 +36,25 @@ const Contact = forwardRef<HTMLDivElement>((_, ref) => {
               <p className="text-center text-gray-600">
                 I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                {socialLinks.map((link, index) => {
-                  const Icon = link.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.5, delay: 0.1 * index }}
+              <div className="flex flex-col space-y-4">
+                {socialLinks.map((link, index) => (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start"
+                      onClick={() => window.open(link.url, "_blank")}
                     >
-                      <Button
-                        variant="outline"
-                        className="flex items-center gap-2 border-purple-200 text-purple-700 hover:bg-purple-50"
-                        onClick={() => window.open(link.url, "_blank")}
-                      >
-                        <Icon className={link.iconClassName} />
-                        {link.label}
-                      </Button>
-                    </motion.div>
-                  )
-                })}
+                      <link.icon className={link.iconClassName} />
+                      <span className="ml-2">{link.label}</span>
+                    </Button>
+                  </motion.div>
+                ))}
               </div>
             </CardContent>
           </Card>

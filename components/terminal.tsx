@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/shared/button"
 import { X, ChevronRight, Loader2, TerminalIcon, AlertTriangle } from "lucide-react"
 import { motion } from "framer-motion"
 

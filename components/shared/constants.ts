@@ -79,32 +79,32 @@ export const projects: Project[] = [
 export const achievements: Achievement[] = [
   {
     icon: Trophy,
-    iconClassName: "h-10 w-10 text-yellow-500",
-    title: "Hackathon Winner",
-    description: "Won 1st place in the annual university hackathon with a team of 4 members.",
-    year: "2023",
+    iconClassName: "text-yellow-500",
+    title: "First Place in Hackathon",
+    description: "Won first place in the annual university hackathon with a revolutionary AI-powered application.",
+    year: "2023"
   },
   {
     icon: Award,
-    iconClassName: "h-10 w-10 text-purple-500",
-    title: "Best Project Award",
-    description: "Received recognition for developing an innovative web application.",
-    year: "2022",
+    iconClassName: "text-blue-500",
+    title: "Best Developer Award",
+    description: "Recognized as the best developer in the company for outstanding contributions to multiple projects.",
+    year: "2022"
   },
   {
     icon: Medal,
-    iconClassName: "h-10 w-10 text-blue-500",
-    title: "CTF Competition",
-    description: "Ranked in the top 10% of participants in a national cybersecurity competition.",
-    year: "2023",
+    iconClassName: "text-green-500",
+    title: "Open Source Contributor",
+    description: "Active contributor to multiple open-source projects with significant impact on the community.",
+    year: "2021"
   },
   {
     icon: Star,
-    iconClassName: "h-10 w-10 text-indigo-500",
-    title: "Open Source Contributor",
-    description: "Contributed to multiple open-source projects with significant impact.",
-    year: "2022",
-  },
+    iconClassName: "text-purple-500",
+    title: "Innovation Award",
+    description: "Received innovation award for developing a groundbreaking solution to a complex problem.",
+    year: "2020"
+  }
 ]
 
 export const socialLinks: SocialLink[] = [

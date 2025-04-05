@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/shared/card"
 
 const About = forwardRef<HTMLDivElement>((_, ref) => {
   return (

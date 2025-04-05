@@ -2,8 +2,8 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { skillCategories } from "./constants"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/card"
+import { skillCategories } from "@/components/shared/constants"
 
 const Skills = forwardRef<HTMLDivElement>((_, ref) => {
   return (

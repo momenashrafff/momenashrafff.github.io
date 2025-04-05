@@ -3,11 +3,11 @@
 import { useState } from "react"
 import Terminal from "@/components/terminal"
 import DeveloperMode from "@/components/modes/developer"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/shared/button"
 import { TerminalIcon } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
-import CursorEffect from "@/components/modes/developer/cursor-effect"
-import HackerMode from "@/components/hacker-mode"
+import CursorEffect from "@/components/shared/cursor-effect"
+import HackerMode from "@/components/modes/hacker"
 
 export default function Home() {
   const [mode, setMode] = useState<"developer" | "hacker">("developer")
@@ -17,12 +17,14 @@ export default function Home() {
   // Function to handle mode change from terminal
   const handleModeChange = (newMode: "developer" | "hacker") => {
     setIsTransitioning(true)
-    setMode(newMode)
-
-    // Reset transitioning state after animation completes
+    
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    
     setTimeout(() => {
+      setMode(newMode)
       setIsTransitioning(false)
-    }, 1500)
+    }, 1000)
   }
 
   return (
@@ -30,7 +32,7 @@ export default function Home() {
       {/* Cursor effect only in developer mode */}
       {mode === "developer" && <CursorEffect />}
 
-      {/* Transition overlay */}
+      {/* Mode transition overlay */}
       <AnimatePresence>
         {isTransitioning && (
           <motion.div

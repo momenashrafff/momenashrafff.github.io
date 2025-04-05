@@ -2,8 +2,8 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { achievements } from "./constants"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/card"
+import { achievements } from "@/components/shared/constants"
 
 const Achievements = forwardRef<HTMLDivElement>((_, ref) => {
   return (
@@ -26,7 +26,6 @@ const Achievements = forwardRef<HTMLDivElement>((_, ref) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {achievements.map((achievement, index) => {
-            const Icon = achievement.icon
             return (
               <motion.div
                 key={index}
@@ -38,7 +37,7 @@ const Achievements = forwardRef<HTMLDivElement>((_, ref) => {
                 <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 bg-white/80 backdrop-blur-sm hover:-translate-y-1 h-full">
                   <CardHeader className="flex flex-row items-center gap-4">
                     <div className="p-3 rounded-full bg-gray-100">
-                      <Icon className={achievement.iconClassName} />
+                      <achievement.icon className={achievement.iconClassName} size={24} />
                     </div>
                     <div>
                       <CardTitle className="text-xl font-bold text-gray-800">{achievement.title}</CardTitle>

@@ -2,7 +2,7 @@
 
 import { forwardRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/shared/button"
 import { ChevronDown } from "lucide-react"
 import Image from "next/image"
 

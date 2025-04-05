@@ -2,8 +2,8 @@
 
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/shared/card"
+import { Button } from "@/components/shared/button"
 import { Github, ExternalLink } from "lucide-react"
 
 const Projects = forwardRef<HTMLDivElement>((_, ref) => {
