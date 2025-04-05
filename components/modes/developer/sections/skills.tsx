@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/card"
 import { skillCategories } from "@/components/shared/constants"
 
-const Skills = forwardRef<HTMLElement>((_, ref) => {
+const Skills = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <section
       ref={ref}

@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/shared/card"
 
-const About = forwardRef<HTMLElement>((_, ref) => {
+const About = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <section
       ref={ref}

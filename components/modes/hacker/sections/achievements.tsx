@@ -6,7 +6,7 @@ import { Section } from "@/components/shared/section"
 import { TerminalHeader } from "../ui/terminal-header"
 import { Award, Trophy, Medal } from "lucide-react"
 
-const Achievements = forwardRef<HTMLElement>((_, ref) => {
+const Achievements = forwardRef<HTMLDivElement>((_, ref) => {
   const achievements = [
     {
       title: "70% Scholarship",

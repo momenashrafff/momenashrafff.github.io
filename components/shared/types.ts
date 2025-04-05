@@ -73,9 +73,9 @@ export interface SectionRefs {
   hero: HTMLDivElement | null
   about: HTMLDivElement | null
   timeline: HTMLDivElement | null
-  skills?: HTMLDivElement | null
-  projects?: HTMLDivElement | null
-  blog?: HTMLDivElement | null
-  achievements?: HTMLDivElement | null
-  contact?: HTMLDivElement | null
+  skills: HTMLDivElement | null
+  projects: HTMLDivElement | null
+  achievements: HTMLDivElement | null
+  contact: HTMLDivElement | null
+  blog: HTMLDivElement | null
 } 

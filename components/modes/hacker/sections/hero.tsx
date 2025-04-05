@@ -8,7 +8,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Github, Mail, Linkedin, Shield } from "lucide-react"
 
-const Hero = forwardRef<HTMLElement>((_, ref) => {
+const Hero = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <Section id="hero" className="py-20 bg-black border-b border-green-500" ref={ref}>
       <div className="container mx-auto px-4">

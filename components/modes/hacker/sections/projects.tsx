@@ -6,7 +6,7 @@ import { Section } from "@/components/shared/section"
 import { TerminalHeader } from "../ui/terminal-header"
 import { Github, Lock, Shield, Key } from "lucide-react"
 
-const Projects = forwardRef<HTMLElement>((_, ref) => {
+const Projects = forwardRef<HTMLDivElement>((_, ref) => {
   const projects = [
     {
       title: "Privacy-Preserving Dijkstra",

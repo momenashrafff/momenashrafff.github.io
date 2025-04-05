@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Section } from "@/components/shared/section"
 import { TerminalHeader } from "../ui/terminal-header"
 
-const About = forwardRef<HTMLElement>((_, ref) => {
+const About = forwardRef<HTMLDivElement>((_, ref) => {
   const securitySkills = [
     "Privacy-Preserving Technologies",
     "MPC (Multi-Party Computation)",

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import TimelineItem from "@/components/shared/timeline-item"
 import { GraduationCap, Briefcase, Award, Shield, Code } from "lucide-react"
 
-const Timeline = forwardRef<HTMLElement>((_, ref) => {
+const Timeline = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <section
       ref={ref}

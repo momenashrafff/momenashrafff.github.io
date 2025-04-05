@@ -13,9 +13,9 @@ export function useSectionTracker(initialSection = "hero") {
     timeline: null,
     skills: null,
     projects: null,
-    blog: null,
     achievements: null,
     contact: null,
+    blog: null,
   })
 
   // Wait for refs to be initialized
@@ -112,6 +112,7 @@ export function useSectionTracker(initialSection = "hero") {
     projects: { current: sections.current.projects },
     achievements: { current: sections.current.achievements },
     contact: { current: sections.current.contact },
+    blog: { current: sections.current.blog },
   }
 
   return { activeSection, sections, refs, refsReady, scrollToSection }

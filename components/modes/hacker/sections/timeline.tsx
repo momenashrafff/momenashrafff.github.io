@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Section } from "@/components/shared/section"
 import { TerminalHeader } from "../ui/terminal-header"
 
-const Timeline = forwardRef<HTMLElement>((_, ref) => {
+const Timeline = forwardRef<HTMLDivElement>((_, ref) => {
   const timelineItems = [
     {
       year: "Sep. 2023 - June 2024",

@@ -1,5 +1,6 @@
 import { ReactNode, cloneElement, isValidElement, Children, useState } from "react"
-import { SectionId, useSectionTracker, SectionRefs } from "./hooks/use-section-tracker"
+import { SectionId, useSectionTracker } from "@/components/shared/hooks/use-section-tracker"
+import { SectionRefs } from "./types"
 
 interface HeaderProps {
   activeSection: SectionId
@@ -18,7 +19,7 @@ interface LayoutProps {
 }
 
 export function Layout({ children, header, className = "", initialSection = "hero" }: LayoutProps) {
-  const { activeSection, sections, scrollToSection } = useSectionTracker({ initialSection })
+  const { activeSection, sections, scrollToSection } = useSectionTracker(initialSection)
   const [localRefsReady, setLocalRefsReady] = useState(false)
 
   const headerWithProps = isValidElement(header)
@@ -35,7 +36,7 @@ export function Layout({ children, header, className = "", initialSection = "her
       const sectionId = (child.props as { id?: SectionId }).id
       if (sectionId && sections.current[sectionId] === null) {
         return cloneElement(child, {
-          ref: (el: HTMLElement | null) => {
+          ref: (el: HTMLDivElement | null) => {
             if (el) {
               sections.current[sectionId] = el
               const allRefsSet = Object.values(sections.current).every(ref => ref !== null)
@@ -44,7 +45,7 @@ export function Layout({ children, header, className = "", initialSection = "her
               }
             }
           }
-        } as { ref: (el: HTMLElement | null) => void })
+        } as { ref: (el: HTMLDivElement | null) => void })
       }
     }
     return child

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Section } from "@/components/shared/section"
 import { TerminalHeader } from "../ui/terminal-header"
 
-const Blog = forwardRef<HTMLElement>((_, ref) => {
+const Blog = forwardRef<HTMLDivElement>((_, ref) => {
   const blogPosts = [
     {
       title: "Building Scalable Web Applications",
