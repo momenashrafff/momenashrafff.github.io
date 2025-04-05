@@ -9,32 +9,62 @@ import { Github, ExternalLink } from "lucide-react"
 const Projects = forwardRef<HTMLDivElement>((_, ref) => {
   const projects = [
     {
-      title: "Personal Portfolio",
-      description: "My personal website with dual-mode interface and interactive terminal.",
+      title: "tutorFlow",
+      description: "A comprehensive e-learning platform with security measures to protect user data and enhance platform integrity.",
       image: "bg-gradient-to-br from-purple-400 to-indigo-600",
-      tags: ["Next.js", "React", "TypeScript"],
+      tags: ["Next.js", "Nest.js", "MongoDB"],
       links: {
-        github: "#",
+        github: "https://github.com/momenashrafff",
         demo: "#",
       },
     },
     {
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce application with user authentication and payment processing.",
+      title: "GIU-Connect",
+      description: "A platform built to help German International University (GIU) students find partners for tutorial exchanges support.",
       image: "bg-gradient-to-br from-indigo-400 to-blue-600",
-      tags: ["React", "Node.js", "MongoDB"],
+      tags: ["Flutter", "Firebase"],
       links: {
-        github: "#",
+        github: "https://github.com/momenashrafff",
         demo: "#",
       },
     },
     {
-      title: "Security Scanner",
-      description: "An automated tool for detecting common web vulnerabilities and security issues.",
+      title: "Online Coaching Platform",
+      description: "A fitness coaching platform with Stripe payment integration, email services, and error handling.",
       image: "bg-gradient-to-br from-blue-400 to-cyan-600",
-      tags: ["Python", "Flask", "SQLAlchemy"],
+      tags: ["React.js", "Node.js", "Stripe"],
       links: {
-        github: "#",
+        github: "https://github.com/momenashrafff",
+        demo: "#",
+      },
+    },
+    {
+      title: "The Last Of Us: Legacy",
+      description: "A turn-based survival game where players control heroes to navigate a zombie apocalypse with resource management.",
+      image: "bg-gradient-to-br from-green-400 to-emerald-600",
+      tags: ["Java", "JavaFX"],
+      links: {
+        github: "https://github.com/momenashrafff",
+        demo: "#",
+      },
+    },
+    {
+      title: "Infinity Systems",
+      description: "A Home Sync project enabling centralized management of diverse devices via a single website interface.",
+      image: "bg-gradient-to-br from-red-400 to-pink-600",
+      tags: [".NET Core MVC", "C#", "MSSQL"],
+      links: {
+        github: "https://github.com/momenashrafff",
+        demo: "#",
+      },
+    },
+    {
+      title: "Smart Mirror",
+      description: "Led the technical team in designing and implementing an interactive AR mirror for DIOR X GIU LAB.",
+      image: "bg-gradient-to-br from-yellow-400 to-orange-600",
+      tags: ["C#", "Unity 3D", "Lens Studio"],
+      links: {
+        github: "https://github.com/momenashrafff",
         demo: "#",
       },
     },

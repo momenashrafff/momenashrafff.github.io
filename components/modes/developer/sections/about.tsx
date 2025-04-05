@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/shared/card"
 
-const About = forwardRef<HTMLDivElement>((_, ref) => {
+const About = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section
       ref={ref}
@@ -31,18 +31,48 @@ const About = forwardRef<HTMLDivElement>((_, ref) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-              I&apos;m a passionate software developer and computer science student with a keen interest in building modern
-              web applications. Currently in my third year at German International University (GIU), I&apos;m constantly
-              learning and improving my skills in various technologies.
-            </p>
-            <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-              When I&apos;m not coding, I enjoy exploring cybersecurity concepts, participating in CTF competitions, and
-              writing technical blog posts about my findings and learnings.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              I believe in clean code, continuous learning, and building applications that solve real-world problems.
-            </p>
+            <div className="space-y-8">
+              <div className="relative">
+                <div className="absolute -left-4 h-full w-1 bg-gradient-to-b from-purple-600 to-indigo-600 rounded-full"></div>
+                <p className="text-gray-700 text-lg leading-relaxed pl-4">
+                  I&apos;m a passionate software developer and computer science student at German International University (GIU). 
+                  With a strong academic record as the <span className="font-semibold text-purple-700">2nd highest-ranked student</span> in my major, 
+                  I combine theoretical knowledge with practical experience in building modern web applications and secure systems.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-xl shadow-inner">
+                <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+                  Technical Expertise
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  My expertise spans across various technologies and frameworks including 
+                  <span className="font-medium text-indigo-600"> Next.js</span>, 
+                  <span className="font-medium text-blue-600"> React</span>, 
+                  <span className="font-medium text-purple-600"> Flutter</span>, and 
+                  <span className="font-medium text-cyan-600"> .NET Core MVC</span>. 
+                  I&apos;m particularly interested in security and privacy, having participated in workshops on 
+                  <span className="font-medium text-emerald-600"> MPC</span>, 
+                  <span className="font-medium text-teal-600"> Homomorphic Encryption</span>, and 
+                  <span className="font-medium text-green-600"> Zero-Knowledge Proofs</span> at Ulm University, Germany.
+                </p>
+              </div>
+
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-indigo-600/5 rounded-xl"></div>
+                <div className="relative p-6 backdrop-blur-sm rounded-xl border border-purple-200">
+                  <h3 className="text-xl font-semibold mb-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+                    Community Impact
+                  </h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Beyond development, I actively contribute to the programming community as a coach at 
+                    <span className="font-semibold text-purple-700"> GIU&apos;s Collegiate Programming Club</span>, 
+                    where I&apos;ve trained over 35 students for competitive programming contests, helping them excel 
+                    in their programming journey.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -93,7 +123,7 @@ const About = forwardRef<HTMLDivElement>((_, ref) => {
                     <span className="text-white ml-4">
                       <span className="text-green-400">education</span>
                       <span className="text-white">:</span>
-                      <span className="text-yellow-300">&quot;Computer Science at GIU&quot;</span>
+                      <span className="text-yellow-300">&quot;BSc. Computer Science at GIU&quot;</span>
                       <span className="text-white">,</span>
                     </span>
                   </div>
@@ -105,9 +135,9 @@ const About = forwardRef<HTMLDivElement>((_, ref) => {
                       <span className="text-yellow-300">[</span>
                       <span className="text-yellow-300">&quot;Web Development&quot;</span>
                       <span className="text-white">,</span>
-                      <span className="text-yellow-300">&quot;Cybersecurity&quot;</span>
+                      <span className="text-yellow-300">&quot;Security&quot;</span>
                       <span className="text-white">,</span>
-                      <span className="text-yellow-300">&quot;CTF&quot;</span>
+                      <span className="text-yellow-300">&quot;Competitive Programming&quot;</span>
                       <span className="text-yellow-300">]</span>
                     </span>
                   </div>

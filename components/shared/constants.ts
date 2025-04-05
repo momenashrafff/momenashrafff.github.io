@@ -7,12 +7,12 @@ export const skillCategories: SkillCategory[] = [
     iconClassName: "h-10 w-10 mb-2 text-purple-600",
     title: "Frontend Development",
     skills: [
-      { name: "HTML/CSS", level: 90 },
-      { name: "JavaScript", level: 85 },
+      { name: "React.js", level: 90 },
+      { name: "Next.js", level: 85 },
+      { name: "Flutter", level: 85 },
       { name: "TypeScript", level: 80 },
-      { name: "React", level: 85 },
-      { name: "Next.js", level: 75 },
-      { name: "Tailwind CSS", level: 90 },
+      { name: "JavaFX", level: 75 },
+      { name: "Unity 3D", level: 70 },
     ],
   },
   {
@@ -20,25 +20,25 @@ export const skillCategories: SkillCategory[] = [
     iconClassName: "h-10 w-10 mb-2 text-indigo-600",
     title: "Backend Development",
     skills: [
-      { name: "Node.js", level: 80 },
-      { name: "Express", level: 75 },
-      { name: "Python", level: 70 },
-      { name: "Java", level: 65 },
-      { name: "RESTful APIs", level: 85 },
-      { name: "GraphQL", level: 60 },
+      { name: "Nest.js", level: 85 },
+      { name: "Node.js", level: 85 },
+      { name: ".NET Core", level: 80 },
+      { name: "Java", level: 80 },
+      { name: "C#", level: 75 },
+      { name: "Firebase", level: 70 },
     ],
   },
   {
     icon: Database,
     iconClassName: "h-10 w-10 mb-2 text-blue-600",
-    title: "Database & Tools",
+    title: "Database & Security",
     skills: [
-      { name: "MongoDB", level: 75 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "Git", level: 85 },
-      { name: "Docker", level: 60 },
-      { name: "AWS", level: 65 },
-      { name: "Linux", level: 70 },
+      { name: "MongoDB", level: 85 },
+      { name: "MSSQL", level: 80 },
+      { name: "MPC", level: 75 },
+      { name: "Zero-Knowledge Proofs", level: 70 },
+      { name: "Homomorphic Encryption", level: 70 },
+      { name: "GDPR Compliance", level: 75 },
     ],
   },
 ]
@@ -80,30 +80,44 @@ export const achievements: Achievement[] = [
   {
     icon: Trophy,
     iconClassName: "text-yellow-500",
-    title: "First Place in Hackathon",
-    description: "Won first place in the annual university hackathon with a revolutionary AI-powered application.",
-    year: "2023"
+    title: "70% Scholarship at GIU",
+    description: "Awarded 70% scholarship at The German International University, ranked 2nd out of 350+ students.",
+    year: "2022"
   },
   {
     icon: Award,
     iconClassName: "text-blue-500",
-    title: "Best Developer Award",
-    description: "Recognized as the best developer in the company for outstanding contributions to multiple projects.",
-    year: "2022"
+    title: "21st Place in ECPC",
+    description: "Secured 21st place at the Egyptian Collegiate Programming Contest (ECPC).",
+    year: "2023"
   },
   {
     icon: Medal,
     iconClassName: "text-green-500",
-    title: "Open Source Contributor",
-    description: "Active contributor to multiple open-source projects with significant impact on the community.",
-    year: "2021"
+    title: "2nd Place in GIU Programming Contest",
+    description: "Achieved second place at the German International University Programming Contest.",
+    year: "2023"
   },
   {
     icon: Star,
     iconClassName: "text-purple-500",
-    title: "Innovation Award",
-    description: "Received innovation award for developing a groundbreaking solution to a complex problem.",
-    year: "2020"
+    title: "1st Place in Hack App Hackathon",
+    description: "Won first place at Ulm University's Hack App Hackathon with privacy-preserving Dijkstra's using MP-SPDZ.",
+    year: "2024"
+  },
+  {
+    icon: Trophy,
+    iconClassName: "text-red-500",
+    title: "3rd Place in IEEE Hackathon",
+    description: "Secured third place at Exceed Hackathon (IEEE) for a VR Physics Education App.",
+    year: "2023"
+  },
+  {
+    icon: Star,
+    iconClassName: "text-indigo-500",
+    title: "Arlo Security Hall of Fame",
+    description: "Recognized in Arlo Security Hall of Fame via Bugcrowd for identifying a vulnerability.",
+    year: "2023"
   }
 ]
 
@@ -112,18 +126,18 @@ export const socialLinks: SocialLink[] = [
     icon: Github,
     iconClassName: "h-6 w-6",
     label: "GitHub",
-    url: "https://github.com/yourusername",
+    url: "https://github.com/momenashrafff",
   },
   {
     icon: Linkedin,
     iconClassName: "h-6 w-6",
     label: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://linkedin.com/in/momenashrafff",
   },
   {
     icon: Mail,
     iconClassName: "h-6 w-6",
     label: "Email",
-    url: "mailto:your.email@example.com",
+    url: "mailto:momenashraf@proton.me",
   },
 ] 

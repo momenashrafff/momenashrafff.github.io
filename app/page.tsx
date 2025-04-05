@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Terminal from "@/components/terminal"
+import Terminal from "@/components/shared/terminal"
 import DeveloperMode from "@/components/modes/developer"
 import { Button } from "@/components/shared/button"
 import { TerminalIcon } from "lucide-react"
@@ -17,9 +17,6 @@ export default function Home() {
   // Function to handle mode change from terminal
   const handleModeChange = (newMode: "developer" | "hacker") => {
     setIsTransitioning(true)
-    
-    // Scroll to top of the page
-    window.scrollTo({ top: 0, behavior: "smooth" })
     
     setTimeout(() => {
       setMode(newMode)

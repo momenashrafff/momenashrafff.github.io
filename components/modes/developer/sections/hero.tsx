@@ -56,8 +56,8 @@ const Hero = forwardRef<HTMLDivElement>((_, ref) => {
                 <span className="text-purple-600 font-normal">Software Developer</span> & Computer Science Student
               </h2>
               <p className="text-gray-600 mb-6 text-lg">
-                I&apos;m a third-year Computer Science student at GIU with a passion for building clean, efficient, and
-                user-friendly applications.
+                {/* I&apos;m a Computer Science student at German International University (GIU) with a passion for building secure, efficient, and
+                user-friendly applications. Ranked 2nd highest in my major with a GPA of 3.8/4.0. */}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 rounded-full px-8 py-6 text-lg shadow-lg shadow-purple-200 transition-all hover:shadow-xl">

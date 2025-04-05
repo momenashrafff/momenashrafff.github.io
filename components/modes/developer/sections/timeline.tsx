@@ -3,9 +3,9 @@
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import TimelineItem from "@/components/shared/timeline-item"
-import { GraduationCap, Briefcase, Award, Shield, Github, Code } from "lucide-react"
+import { GraduationCap, Briefcase, Award, Shield, Code } from "lucide-react"
 
-const Timeline = forwardRef<HTMLDivElement>((_, ref) => {
+const Timeline = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section
       ref={ref}
@@ -26,9 +26,9 @@ const Timeline = forwardRef<HTMLDivElement>((_, ref) => {
 
         <div className="relative text-gray-700">
           <TimelineItem
-            date="2021"
-            title="Started Computer Science at GIU"
-            description="Began my academic journey in Computer Science at German International University."
+            date="2022 - 2026"
+            title="BSc. in Computer Science at GIU"
+            description="Pursuing Computer Science at German International University with a GPA of 3.8/4.0, ranked 2nd highest in the major."
             icon={<GraduationCap className="h-6 w-6 text-purple-500" />}
             iconClassName="bg-purple-100 border border-purple-200"
             isLeft={true}
@@ -36,45 +36,45 @@ const Timeline = forwardRef<HTMLDivElement>((_, ref) => {
           />
 
           <TimelineItem
-            date="2022"
-            title="First Hackathon"
-            description="Participated in my first hackathon and won 2nd place with a team project."
-            icon={<Award className="h-6 w-6 text-indigo-500" />}
+            date="Jan 2024 - Feb 2024"
+            title="Private-Eye Workshop at Ulm University"
+            description="Engaged in sessions on MPC, Homomorphic Encryption, and Zero-Knowledge Proofs in AI security, exploring LINDDUN privacy strategies."
+            icon={<Shield className="h-6 w-6 text-indigo-500" />}
             iconClassName="bg-indigo-100 border border-indigo-200"
             isLeft={false}
           />
 
           <TimelineItem
-            date="2022"
-            title="Web Development Internship"
-            description="Completed a 3-month internship focusing on frontend development with React."
+            date="Sep 2023 - June 2024"
+            title="Teaching Assistant at GIU"
+            description="Supported teaching in Java OOP, Data Structures, and Algorithms, along with C++, assisting 70+ students."
             icon={<Briefcase className="h-6 w-6 text-blue-500" />}
             iconClassName="bg-blue-100 border border-blue-200"
             isLeft={true}
           />
 
           <TimelineItem
-            date="2023"
-            title="CTF Competition Finalist"
-            description="Reached the finals in a Capture The Flag cybersecurity competition."
-            icon={<Shield className="h-6 w-6 text-green-500" />}
+            date="2024"
+            title="Hack App Hackathon Winner"
+            description="Won 1st place at Ulm University's Hackathon with privacy-preserving Dijkstra's using MP-SPDZ."
+            icon={<Award className="h-6 w-6 text-green-500" />}
             iconClassName="bg-green-100 border border-green-200"
             isLeft={false}
           />
 
           <TimelineItem
             date="2023"
-            title="Open Source Contributions"
-            description="Started contributing to open source projects with over 50 contributions."
-            icon={<Github className="h-6 w-6 text-gray-700" />}
+            title="Security Achievement"
+            description="Recognized in Arlo Security Hall of Fame via Bugcrowd for identifying a vulnerability."
+            icon={<Shield className="h-6 w-6 text-gray-700" />}
             iconClassName="bg-gray-100 border border-gray-200"
             isLeft={true}
           />
 
           <TimelineItem
-            date="Present"
-            title="Expanding Skills"
-            description="Currently focusing on full-stack development and cybersecurity."
+            date="2023 - Present"
+            title="Programming Coach at GIUCPC"
+            description="Training over 35 students for the Egyptian Collegiate Programming Contest (ACM-ECPC)."
             icon={<Code className="h-6 w-6 text-purple-500" />}
             iconClassName="bg-purple-100 border border-purple-200"
             isLeft={false}

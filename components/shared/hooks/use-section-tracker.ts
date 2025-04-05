@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { SectionRefs } from "../types"
 
+export type SectionId = keyof SectionRefs
+
 export function useSectionTracker(initialSection = "hero") {
   const [activeSection, setActiveSection] = useState(initialSection)
   const [refsReady, setRefsReady] = useState(false)
@@ -34,12 +36,10 @@ export function useSectionTracker(initialSection = "hero") {
   }, [])
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout
-
     const handleScroll = () => {
       if (isScrolling) return
 
-      const scrollPosition = window.scrollY + window.innerHeight / 2
+      const scrollPosition = window.scrollY + window.innerHeight / 3
 
       // Find the current active section
       let currentSection = initialSection
@@ -47,9 +47,10 @@ export function useSectionTracker(initialSection = "hero") {
 
       Object.entries(sections.current).forEach(([id, element]) => {
         if (element) {
-          const elementTop = element.offsetTop
+          const elementTop = element.getBoundingClientRect().top + window.pageYOffset
           const elementBottom = elementTop + element.offsetHeight
-          const distance = Math.abs(scrollPosition - (elementTop + elementBottom) / 2)
+          const elementCenter = (elementTop + elementBottom) / 2
+          const distance = Math.abs(scrollPosition - elementCenter)
           
           if (distance < minDistance) {
             minDistance = distance
@@ -71,7 +72,6 @@ export function useSectionTracker(initialSection = "hero") {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("scrollend", handleScrollEnd)
-      clearTimeout(scrollTimeout)
     }
   }, [initialSection, isScrolling])
 
@@ -79,7 +79,29 @@ export function useSectionTracker(initialSection = "hero") {
     const section = sections.current[sectionId as keyof SectionRefs]
     if (section) {
       setIsScrolling(true)
-      section.scrollIntoView({ behavior: "smooth" })
+      
+      // Get the target element's position
+      const targetElement = section
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset
+      
+      // Calculate the final position with header offset
+      const headerOffset = 80 // Adjust this value based on your header height
+      const finalPosition = targetPosition - headerOffset
+      
+      // Scroll to the position with smooth behavior
+      window.scrollTo({
+        top: finalPosition,
+        behavior: "smooth"
+      })
+
+      // Update active section immediately
+      setActiveSection(sectionId)
+
+      // Reset isScrolling after animation
+      const scrollDuration = 1000 // ms
+      setTimeout(() => {
+        setIsScrolling(false)
+      }, scrollDuration)
     }
   }
 
