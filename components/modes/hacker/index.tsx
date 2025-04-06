@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "@/components/shared/header"
 import Hero from "@/components/modes/hacker/sections/hero"
 import About from "@/components/modes/hacker/sections/about"
@@ -13,11 +13,35 @@ import { ThemeProvider } from "@/components/shared/context/theme-context"
 
 export default function HackerMode() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // Track if section refs have been initialized
+  const [refsInitialized, setRefsInitialized] = useState(false)
   const { sections, scrollToSection } = useSectionTracker()
+  
+  // Force section IDs to be available for direct DOM access
+  useEffect(() => {
+    // Add IDs to all sections for direct DOM access
+    const addSectionIds = () => {
+      const sectionElements = document.querySelectorAll('section');
+      sectionElements.forEach(section => {
+        if (section.getAttribute('ref') && !section.id) {
+          const refName = section.getAttribute('ref');
+          if (refName) section.id = refName;
+        }
+      });
+      setRefsInitialized(true);
+    };
+    
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      addSectionIds();
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [])
 
   return (
     <ThemeProvider initialTheme="hacker">
-      <div className="min-h-screen bg-black text-green-500 relative overflow-hidden">
+      <div className={`min-h-screen bg-black text-green-500 relative overflow-hidden pt-16 ${refsInitialized ? 'sections-ready' : ''}`}>
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} scrollToSection={scrollToSection} />
         <main className="relative">
           <Hero ref={(el) => { if (el) sections.current.hero = el }} />

@@ -82,10 +82,12 @@ export function useSectionTracker(initialSection = "hero") {
       
       // Get the target element's position
       const targetElement = section
-      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY
       
       // Calculate the final position with header offset
-      const headerOffset = 80 // Adjust this value based on your header height
+      // Use a smaller offset for mobile devices
+      const isMobile = window.innerWidth < 768
+      const headerOffset = isMobile ? 60 : 80 // Smaller offset for mobile
       const finalPosition = targetPosition - headerOffset
       
       // Scroll to the position with smooth behavior
@@ -96,6 +98,20 @@ export function useSectionTracker(initialSection = "hero") {
 
       // Update active section immediately
       setActiveSection(sectionId)
+
+      // Close any open mobile menu if applicable
+      const mobileMenuButton = document.querySelector('[aria-label="Toggle menu"]')
+      if (isMobile && mobileMenuButton) {
+        // This is a fallback in case the menu doesn't close automatically
+        setTimeout(() => {
+          const event = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          })
+          mobileMenuButton.dispatchEvent(event)
+        }, 100)
+      }
 
       // Reset isScrolling after animation
       const scrollDuration = 1000 // ms

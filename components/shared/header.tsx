@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef } from "react"
 import { Button } from "@/components/shared/button"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -13,6 +14,8 @@ interface HeaderProps {
 }
 
 export default function Header({ isMenuOpen, setIsMenuOpen, scrollToSection }: HeaderProps) {
+  // Add a ref to track if we're in the process of closing the menu
+  const isClosingMenu = useRef(false);
   const { theme, styles } = useTheme()
   const { activeSection } = useSectionTracker()
 
@@ -25,14 +28,71 @@ export default function Header({ isMenuOpen, setIsMenuOpen, scrollToSection }: H
     { name: "Contact", href: "#contact" },
   ]
 
-  const handleNavClick = (sectionId: string) => {
-    if (scrollToSection) {
-      scrollToSection(sectionId)
+  // Function to handle closing the menu
+  const closeMenu = () => {
+    if (isMenuOpen && !isClosingMenu.current) {
+      isClosingMenu.current = true;
+      setIsMenuOpen(false);
+      
+      // Reset the closing flag after a delay
+      setTimeout(() => {
+        isClosingMenu.current = false;
+      }, 300); // Longer than animation duration
     }
+  };
+  
+  // Function to handle navigation clicks
+  const handleNavClick = (sectionId: string) => {
+    // Close the menu first if it's open
+    closeMenu();
+    
+    // Wait for menu to close before scrolling
+    setTimeout(() => {
+      // Try to find the section by ID first (direct DOM access)
+      let section = document.getElementById(sectionId);
+      
+      // If not found by ID, try to find by section attribute
+      if (!section) {
+        const allSections = document.querySelectorAll('section');
+        allSections.forEach(el => {
+          // Check if this is the section we're looking for
+          if (el.getAttribute('data-section') === sectionId) {
+            section = el as HTMLElement;
+          }
+        });
+      }
+      
+      // If still not found, try to find the first section with a matching ref attribute
+      if (!section) {
+        const potentialSections = document.querySelectorAll(`section[ref="${sectionId}"]`);
+        if (potentialSections.length > 0) {
+          section = potentialSections[0] as HTMLElement;
+        }
+      }
+      
+      if (section) {
+        // Add ID to the section for future reference
+        if (!section.id) section.id = sectionId;
+        
+        // Calculate position with offset for header
+        const isMobile = window.innerWidth < 768
+        const headerOffset = isMobile ? -60 : -80 // Adjust based on header height
+        const y = section.getBoundingClientRect().top + window.scrollY + headerOffset
+        
+        // Scroll with smooth behavior
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      } else if (scrollToSection) {
+        // Fallback to the provided scrollToSection function
+        scrollToSection(sectionId);
+      }
+    }, 150); // Delay scrolling until after menu closes
   }
 
   return (
-    <header className={`sticky top-0 z-30 ${styles.bg.primary}/80 backdrop-blur-md border-b ${styles.border.primary}`}>
+    <header className={`fixed w-full top-0 z-30 ${styles.bg.primary}${theme === "hacker" ? "" : "/80"} ${theme === "hacker" ? "bg-black" : "backdrop-blur-md"} border-b ${styles.border.primary}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -76,30 +136,48 @@ export default function Header({ isMenuOpen, setIsMenuOpen, scrollToSection }: H
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              // Only toggle if we're not in the process of closing
+              if (!isClosingMenu.current) {
+                setIsMenuOpen(!isMenuOpen);
+              }
+            }}
             className={styles.text.secondary}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - Fixed position overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className={`md:hidden ${styles.bg.primary} border-t ${styles.border.primary}/50`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={`fixed inset-x-0 top-[61px] z-50 md:hidden ${styles.bg.primary} border-t ${styles.border.primary}/50`}
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="container mx-auto px-4 py-4 flex flex-col space-y-4"
+            >
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => {
-                    handleNavClick(item.href.substring(1))
-                    setIsMenuOpen(false)
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent event bubbling
+                    
+                    // Use the handleNavClick function which handles closing and scrolling
+                    handleNavClick(item.href.substring(1));
                   }}
                   className={`py-2 px-4 border ${
                     activeSection === item.href.substring(1)
@@ -110,7 +188,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen, scrollToSection }: H
                   {item.name}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

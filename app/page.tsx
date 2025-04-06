@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Terminal from "@/components/shared/terminal"
 import DeveloperMode from "@/components/modes/developer"
 import { Button } from "@/components/shared/button"
@@ -13,6 +13,11 @@ export default function Home() {
   const [mode, setMode] = useState<"developer" | "hacker">("developer")
   const [showTerminal, setShowTerminal] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
+
+  // when switch or reload, scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [mode])
 
   // Function to handle mode change from terminal
   const handleModeChange = (newMode: "developer" | "hacker") => {
@@ -47,7 +52,7 @@ export default function Home() {
               className="text-center"
             >
               <div className="text-2xl md:text-4xl font-mono mb-4">
-                {mode === "developer" ? (
+                {mode === "hacker" ? (
                   <span className="text-purple-500">Initializing Developer Environment...</span>
                 ) : (
                   <span className="text-red-500">Activating Hacker Protocol...</span>
@@ -55,7 +60,7 @@ export default function Home() {
               </div>
               <div className="w-64 h-1 mx-auto bg-gradient-to-r from-transparent via-white to-transparent">
                 <motion.div
-                  className={`h-full ${mode === "developer" ? "bg-purple-500" : "bg-red-500"}`}
+                  className={`h-full ${mode === "hacker" ? "bg-purple-500" : "bg-red-500"}`}
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1 }}
@@ -121,7 +126,11 @@ export default function Home() {
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              <Terminal onClose={() => setShowTerminal(false)} onModeChange={handleModeChange} />
+              <Terminal 
+                onClose={() => setShowTerminal(false)} 
+                onModeChange={handleModeChange} 
+                currentMode={mode}
+              />
             </motion.div>
           </motion.div>
         )}

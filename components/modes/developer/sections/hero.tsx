@@ -2,7 +2,6 @@
 
 import { forwardRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/shared/button"
 import { ChevronDown } from "lucide-react"
 import Image from "next/image"
 
@@ -59,17 +58,7 @@ const Hero = forwardRef<HTMLDivElement>((_, ref) => {
                 {/* I&apos;m a Computer Science student at German International University (GIU) with a passion for building secure, efficient, and
                 user-friendly applications. Ranked 2nd highest in my major with a GPA of 3.8/4.0. */}
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 rounded-full px-8 py-6 text-lg shadow-lg shadow-purple-200 transition-all hover:shadow-xl">
-                  View Projects
-                </Button>
-                <Button
-                  variant="outline"
-                  className="rounded-full px-8 py-6 text-lg border-purple-300 text-purple-700 hover:bg-purple-50"
-                >
-                  Contact Me
-                </Button>
-              </div>
+              {/* Buttons removed as requested */}
             </div>
           </motion.div>
 
@@ -79,19 +68,20 @@ const Hero = forwardRef<HTMLDivElement>((_, ref) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="relative w-full aspect-square max-w-[300px]">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full blur opacity-75 animate-pulse"></div>
-              <div className="relative w-full h-full rounded-full bg-white overflow-hidden">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+              <div className="absolute inset-0 bg-green-500/20 blur-2xl rounded-full" />
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-purple-500">
                 <Image
-                  src="/assets/MomenAshraf-Picture.jpeg"
-                  alt="Momen Elkhouli"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                    src="/assets/MomenAshraf-Picture.jpeg"
+                    alt="Momen Elkhouli"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
         </div>
 
         <motion.div

@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 interface TerminalProps {
   onClose: () => void
   onModeChange: (mode: "developer" | "hacker") => void
+  currentMode?: "developer" | "hacker"
 }
 
 interface TerminalLine {
@@ -16,7 +17,7 @@ interface TerminalLine {
   content: string
 }
 
-export default function Terminal({ onClose, onModeChange }: TerminalProps) {
+export default function Terminal({ onClose, onModeChange, currentMode = "developer" }: TerminalProps) {
   const [input, setInput] = useState("")
   const [history, setHistory] = useState<TerminalLine[]>([
     { type: "system", content: "Terminal v2.0.1 initialized" },
@@ -141,9 +142,17 @@ export default function Terminal({ onClose, onModeChange }: TerminalProps) {
   const processCommand = (command: string) => {
     switch (command) {
       case "help":
+        // Determine if we're in hacker mode based on terminal history or the currentMode prop
+        const isInHackerMode = 
+          currentMode === "hacker" || 
+          history.some(line => 
+            line.content.includes("Activating Attack Mode") || 
+            line.content.includes("Override successful") ||
+            line.content.includes("Bypassing security protocols")
+          );
+        
         setTimeout(() => {
-          setHistory((prev) => [
-            ...prev,
+          const baseCommands = [
             { type: "system", content: "Available commands:" } as TerminalLine,
             { type: "output", content: "help - Show this help message" } as TerminalLine,
             { type: "output", content: "clear - Clear the terminal" } as TerminalLine,
@@ -153,9 +162,18 @@ export default function Terminal({ onClose, onModeChange }: TerminalProps) {
             { type: "output", content: "achievements - View my achievements" } as TerminalLine,
             { type: "output", content: "contact - Show contact information" } as TerminalLine,
             { type: "output", content: "scan - Scan for vulnerabilities" } as TerminalLine,
-            { type: "output", content: "access --override - Switch to Hacker Mode" } as TerminalLine,
-            { type: "output", content: "undercover - Switch back to Developer Mode" } as TerminalLine,
             { type: "output", content: "exit - Close the terminal" } as TerminalLine,
+          ];
+          
+          // Add mode-specific commands
+          const modeSpecificCommands = isInHackerMode 
+            ? [{ type: "output", content: "undercover - Switch back to Developer Mode" } as TerminalLine]
+            : []
+            
+          setHistory((prev) => [
+            ...prev,
+            ...baseCommands,
+            ...modeSpecificCommands
           ])
         }, 200)
         break
@@ -256,7 +274,7 @@ export default function Terminal({ onClose, onModeChange }: TerminalProps) {
               ...newHistory,
               { type: "error", content: "VULNERABILITY DETECTED!" },
               { type: "error", content: "Security breach possible in authentication module" },
-              { type: "warning", content: "Use 'access --override' to exploit vulnerability" },
+              { type: "warning", content: "Use 'access --override' to activate attack mode" },
             ]
           })
         }, 6000)
@@ -266,7 +284,7 @@ export default function Terminal({ onClose, onModeChange }: TerminalProps) {
         // Add responses with delay
         setHistory((prev) => [...prev, { type: "success", content: "ACCESS GRANTED" }])
 
-        setTimeout(() => typeEffect("Switching to Hacker Mode...", "warning"), 500)
+        setTimeout(() => typeEffect("Activating Attack Mode...", "error"), 500)
         setTimeout(() => typeEffect("Initializing secure connection...", "output"), 1500)
         setTimeout(() => typeEffect("Bypassing security protocols...", "output"), 2500)
         setTimeout(() => typeEffect("Override successful!", "success"), 3500)

@@ -18,7 +18,7 @@ export default function DeveloperMode() {
 
   return (
     <ThemeProvider initialTheme="developer">
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pt-16">
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} scrollToSection={scrollToSection} />
         <main className="relative">
           <Hero ref={(el) => { if (el) sections.current.hero = el }} />
